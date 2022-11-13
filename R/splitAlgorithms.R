@@ -87,18 +87,6 @@ SVM <- function(data_values, response) {
   return(c(value, coefficients))
 }
 
-LDA <- function(data_values, response, mat) {
-  ## Calculate class means
-  mean0 <- colmeans(as.matrix(data_values[response == 0,]))
-  mean1 <- colmeans(as.matrix(data_values[response == 1,]))
-  
-  ## Calculate coefficients and value
-  coefficients <- spdinv(mat) %*% (mean1 - mean0)
-  value <- sum(coefficients * (0.5*(mean1 + mean0)))
-  
-  return(c(value, coefficients))
-}
-
 gini_optim <- function(data_values, response) {
   ## Find first split as best uni-variate split
   ## Set fraction of subset variables
