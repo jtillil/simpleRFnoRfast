@@ -83,7 +83,6 @@
 ##' @references
 ##' Breiman, L. (2001). Random forests. Mach Learn, 45(1), 5-32. \cr
 ##' @import stats
-##' @import Rfast
 ##' @export
 simpleRFNetwork <- function(
   ## Standard parameters
@@ -234,7 +233,7 @@ simpleRFNetwork <- function(
     ## Create interquartile range normalized data object
     if (splitmethod == "CART" | splitmethod == "CART_fast") {
       IQR_dat <- model.data[,-1]
-      means <- colmeans(as.matrix(IQR_dat))
+      means <- colMeans(as.matrix(IQR_dat))
       sapply(1:ncol(IQR_dat),
              function(i) {
                IQR_dat[,i] <<- (IQR_dat[,i] - means[i])/IQR(IQR_dat[,i])
