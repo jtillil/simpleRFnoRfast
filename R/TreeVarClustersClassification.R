@@ -205,7 +205,7 @@ TreeVarClustersClassification <- setRefClass("TreeVarClustersClassification",
       }
       
       ## Restrict coefficients to norm 1 for a unique solution up to factor -1
-      coef_norm <- Norm(as.matrix(res[-1]), "F")
+      coef_norm <- norm(as.matrix(res[-1]), "F")
       value <- res[1]/coef_norm
       coefficients <- res[-1]/coef_norm
 
