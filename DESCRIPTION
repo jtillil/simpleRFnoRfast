@@ -16,7 +16,6 @@ Imports:
     coin,
     parallel,
     e1071,
-    Rfast,
     keras,
     tensorflow,
     SeqNet
