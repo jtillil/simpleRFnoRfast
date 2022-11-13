@@ -1,0 +1,24 @@
+Package: simpleRFNetwork
+Type: Package
+Title: Random Forests with emphasis on simplicity
+Version: 0.1.5
+Date: 2022-03-07
+Author: Marvin N. Wright, Johannes Tillil
+Maintainer: Johannes Tillil <tilliljohannes@gmail.com>
+Description: R package for the master thesis of Johannes Tillil. Based
+    upon the package simpleRF by M N Wright. Contains an implementation
+    of RF that handles node splitting with a linear combination of
+    multiple variables instead of a single one.
+License: GPL-3
+Imports:
+    methods,
+    ipred, 
+    coin,
+    parallel,
+    e1071,
+    Rfast,
+    keras,
+    tensorflow,
+    SeqNet
+Suggests: survival
+RoxygenNote: 7.2.1
