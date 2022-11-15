@@ -234,7 +234,7 @@ CART <- function(IQR_data_values, data_values, response) {
   sapply(1:ncol(data_values), function(varID) {
     IQR_vals <<- c(IQR_vals, IQR(data_values[,varID]))
   })
-  Mean_vals <- colmeans(as.matrix(data_values))
+  Mean_vals <- colMeans(as.matrix(data_values))
   
   ## Rescale coefficients and value
   axis_points <- value/coefficients*IQR_vals
@@ -480,7 +480,7 @@ CART_fast <- function(IQR_data_values, data_values, response) {
   sapply(1:ncol(data_values), function(varID) {
     IQR_vals <<- c(IQR_vals, IQR(data_values[,varID]))
   })
-  Mean_vals <- colmeans(as.matrix(data_values))
+  Mean_vals <- colMeans(as.matrix(data_values))
   
   ## Rescale coefficients and value
   axis_points <- value/coefficients*IQR_vals
