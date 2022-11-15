@@ -143,46 +143,6 @@ gini_optim <- function(data_values, response) {
   return(c(value, coefficients))
 }
 
-stoch_optim <- function(data_values, response) {
-  ## Turn on eager execution
-  tf$config$run_functions_eagerly(TRUE)
-  
-  ## Create, compile and fit Keras model
-  model <- keras_model_sequential() %>%
-    layer_dense(
-      units = 1,
-      activation = "sigmoid",
-      input_shape = dim(data_values)[[2]],
-      kernel_initializer='glorot_uniform',
-      bias_initializer='glorot_uniform'
-    )
-  model %>%
-    compile(
-      optimizer = tf$keras$optimizers$Adam(learning_rate = 0.1),
-      # optimizer = tf$keras$optimizers$SGD(learning_rate = 0.1),
-      loss = "binary_crossentropy",
-      run_eagerly = TRUE
-    )
-  model %>%
-    fit(as.matrix(data_values),
-        as.numeric(response)-1,
-        epochs = 100,
-        verbose = 0,
-        callbacks = c(callback_early_stopping(
-          monitor = "loss",
-          min_delta = 0.01,
-          mode = "min",
-          patience = 10
-        ))
-    )
-  
-  ## Read coefficients and value 
-  coefficients <- as.numeric(model$layers[[1]]$weights[[1]]$numpy())
-  value <- -as.numeric(model$layers[[1]]$weights[[2]]$numpy())
-  
-  return(c(value, coefficients))
-}
-
 CART <- function(IQR_data_values, data_values, response) {
   ## Find first split as best uni-variate split
   ## Initiate
