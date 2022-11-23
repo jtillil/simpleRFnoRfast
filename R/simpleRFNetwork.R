@@ -122,11 +122,14 @@ simpleRFNetwork <- function(
   }
   
   ## Check parameters
-  if (is.null(mtry)) {
-    # mtry <- sqrt(length(varclusters))
+  if (mtry == "full") {
+    mtry <- length(varclusters)
+  } else if (mtry == "half") {
     mtry <- ceiling(length(varclusters) * 0.5)
-    # mtry <- length(varclusters)
-  } else if (mtry > ncol(model.data)-1) {
+  } else {
+    mtry <- sqrt(length(varclusters))
+  }
+  if (mtry > length(varclusters)) {
     stop("Mtry cannot be larger than number of independent variables.")
   }
   if (is.null(min_node_size)) {
