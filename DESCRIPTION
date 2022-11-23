@@ -12,10 +12,9 @@ Description: R package for the master thesis of Johannes Tillil. Based
 License: GPL-3
 Imports:
     methods,
-    ipred, 
+    ipred,
     coin,
     parallel,
-    e1071,
-    SeqNet
+    e1071
 Suggests: survival
 RoxygenNote: 7.2.1
